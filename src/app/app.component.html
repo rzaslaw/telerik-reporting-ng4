@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<h1>Telerik Angular 4+ Report Viewer</h1>
+<p></p>
+<h2 *ngIf="mySelectedReport.report">Selected report: "{{mySelectedReport.report}}"</h2>
+<p></p>
+<kendo-dropdownlist 
+    [defaultItem]="defaultItem" 
+    [data]="listItems" 
+    [textField]="'text'" 
+    [valueField]="'value'" 
+    (selectionChange)="handleSelectionChange($event)" 
+    (valueChange)="handleValueChange()">
+</kendo-dropdownlist>
+
+   
+<tr-viewer #viewer1
+    [containerStyle]="viewerContainerStyle"
+    [serviceUrl]="'http://localhost/telerikreportingrestservice//api/reports'"
+    [reportSource]="mySelectedReport"
+    [viewMode]="'INTERACTIVE'"
+    [scaleMode]="'SPECIFIC'"
+    [scale]="1.0">
+</tr-viewer>
